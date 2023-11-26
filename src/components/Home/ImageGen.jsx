@@ -3,6 +3,7 @@ import '../CSS/ImageGen.css';
 import image2 from '../assets/bg.png';
 import ImageCards from './ImageCards';
 import PanelCard from './PanelCard'
+import { TextField } from '@mui/material';
 
 
 
@@ -70,17 +71,17 @@ const ImageGen = () => {
     let speech_bubble = [speech_bubble1,speech_bubble2, speech_bubble3, speech_bubble4, speech_bubble5, speech_bubble6, speech_bubble7, speech_bubble8, speech_bubble9, speech_bubble10]
     let images = [setImageURL1, setImageURL2,setImageURL3, setImageURL4, setImageURL5, setImageURL6, setImageURL7, setImageURL8, setImageURL9, setImageURL10];
     
-    if (panel[0].current.value.trim()===""){
+    if (panel[0]?.current.value.trim()===""){
       alert('Enter the prompt first');
     }
 
     for (let i=0;i<10;i++){
-      let text = panel[i].current.value.trim();
+      let text = panel[i]?.current.value.trim();
       if (text === "") {
         return;
       }
       
-      if (speech_bubble[i].current.value.trim()!==""){
+      if (speech_bubble[i]?.current.value.trim()!==""){
         text = text + " with speech bubble  written in english language containing" + speech_bubble[i].current.value.trim(); 
       }
       query(text,images[i]);
@@ -129,7 +130,7 @@ const ImageGen = () => {
           if (loading) {
             return <div className="btn" onClick={handleImageGeneration}>Wait....</div>;
           } else {
-            return <div className="btn" onClick={handleImageGeneration}>Generate</div>;
+            return <div className="btn" onClick={handleImageGeneration}>Create</div>;
           }
         })()}
     </div>
